@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "denick-admin": {
+      "command": "node",
+      "args": ["/Users/endimac/denick/mcp-server/index.js"],
+      "env": {
+        "API_BASE": "http://localhost:3001",
+        "API_TOKEN": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6Ik1DUCIsImlhdCI6MTc3NzI0ODM1OCwiZXhwIjoxODA4Nzg0MzU4fQ.Wmym8ZoxeqD0B8o6xHGKNr2X6vvAGwSQVIEDpvHTaJY"
+      }
+    }
+  }
+}
