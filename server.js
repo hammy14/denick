@@ -17,7 +17,12 @@ import socialRoutes from './routes/social.js'
 import sitesRoutes from './routes/sites.js'
 import seoRoutes from './routes/seo.js'
 
-dotenv.config()
+// Load environment variables with explicit path for production
+dotenv.config({ path: '/home/apps/denick/.env' })
+// Fallback to local .env if running locally
+if (!process.env.DB_NAMES) {
+  dotenv.config()
+}
 
 // ── Rate limiters ─────────────────────────────────────────────────────────────
 const loginLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 10, standardHeaders: true, legacyHeaders: false, message: { error: 'Too many login attempts. Please try again in 15 minutes.' } })
