@@ -33,8 +33,14 @@ const app = express()
 // ── Middleware ─────────────────────────────────────────────────────────────────
 app.use(compression({ level: 6, threshold: 1024, filter: (req, res) => req.headers['x-no-compression'] ? false : compression.filter(req, res) }))
 app.use(helmet({ contentSecurityPolicy: false, crossOriginEmbedderPolicy: false }))
-const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || process.env.ALLOWED_ORIGIN || 'http://localhost:5173,http://localhost:5174').split(',').map(s => s.trim())
-app.use(cors({ origin: (origin, cb) => (!origin || ALLOWED_ORIGINS.includes(origin)) ? cb(null, true) : cb(null, false), credentials: true }))
+
+// ── CORS Configuration ────────────────────────────────────────────────────────
+// Allow specific origins from environment variable, with sensible defaults for development
+const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || 'http://localhost:5173,http://localhost:5174').split(',').map(s => s.trim())
+app.use(cors({ 
+  origin: (origin, cb) => (!origin || ALLOWED_ORIGINS.includes(origin)) ? cb(null, true) : cb(null, false), 
+  credentials: true 
+}))
 app.use(express.json())
 
 // Cache headers
