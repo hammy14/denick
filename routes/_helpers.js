@@ -1,7 +1,14 @@
 import jwt from 'jsonwebtoken'
 
 // Read env at call time (not import time) so dotenv.config() has run first
-const getSecret  = () => process.env.JWT_SECRET  || 'cs_jwt_secret_change_in_production'
+// IMPORTANT: JWT_SECRET must be set in environment variables for production
+const getSecret  = () => {
+  const secret = process.env.JWT_SECRET
+  if (!secret) {
+    throw new Error('JWT_SECRET environment variable is not set. This is required for authentication.')
+  }
+  return secret
+}
 const getExpires = () => process.env.JWT_EXPIRES_IN || '8h'
 
 // ── Input validation helpers ──────────────────────────────────────────────────
