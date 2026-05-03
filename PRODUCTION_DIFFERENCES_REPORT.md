@@ -28,18 +28,25 @@ url: `${import.meta.env.VITE_BLOG_URL || 'https://cardsparky.com'}/blog/${articl
 
 ---
 
-### 2. Inconsistent Environment Variable Names Across Projects
+### 2. Inconsistent Environment Variable Names Across Projects ✅ FIXED
 
-| Project | Variable Name | Fallback | Issue |
-|---------|---------------|----------|-------|
+| Project | Variable Name | Fallback | Status |
+|---------|---------------|----------|--------|
 | CardSparky | `VITE_API_URL` | `http://localhost:3001` | ✅ Correct |
 | Denick | `VITE_API_URL` | `http://localhost:3001` | ✅ Correct |
-| SerialKillers | `VITE_API_URL` | `http://localhost:5001` | ⚠️ Different port! |
-| SoccerBeacon | `REACT_APP_API_BASE` | `http://localhost:3001` | ❌ Wrong var name (React not Vite) |
+| SerialKillers | `VITE_API_URL` | `http://localhost:3003` | ✅ FIXED |
+| SoccerBeacon | `NEXT_PUBLIC_API_BASE` | `http://localhost:5001` | ✅ FIXED |
 
-**Impact**: If environment variables aren't set correctly, each project falls back to different defaults
+**Changes Made**:
+- ✅ SerialKillers: Fixed fallback port from 5001 to 3003 (correct backend port)
+- ✅ SoccerBeacon: Changed from `NEXT_PUBLIC_API_URL` to `NEXT_PUBLIC_API_BASE` (Next.js convention)
+- ✅ Updated `.env` files with correct values
 
-**Fix**: Standardize all projects to use `VITE_API_URL`
+**Commits**:
+- `d2c9197` (SerialKillers) - Fix: Standardize API configuration - use VITE_API_URL with correct port 3003
+- `48a9666` (SoccerBeacon) - Fix: Standardize API configuration - use NEXT_PUBLIC_API_BASE
+
+**Status**: ✅ COMPLETE - All projects now use consistent environment variable naming conventions
 
 ---
 
@@ -318,17 +325,17 @@ PORT=5001
 
 ### High Priority (Blocking Issues)
 - [x] **Denick**: Remove hardcoded blog URLs, use environment variables ✅ FIXED
-- [ ] **SoccerBeacon**: Set `REACT_APP_API_BASE=https://api.soccerbeacon.com` in Vercel
-- [ ] **SerialKillers**: Fix environment variable name and fallback port
+- [x] **SerialKillers**: Fix environment variable name and fallback port ✅ FIXED
+- [x] **SoccerBeacon**: Standardize API configuration variable name ✅ FIXED
+- [ ] **SoccerBeacon**: Set `NEXT_PUBLIC_API_BASE=https://api.soccerbeacon.com` in Vercel
 
 ### Medium Priority (Configuration)
 - [ ] Create `.env.example` files for all projects
-- [ ] Standardize on `VITE_API_URL` for all Vite projects
 - [ ] Document all required environment variables
+- [ ] Update Vercel environment variables for all projects
 
 ### Low Priority (Code Quality)
 - [ ] Remove hardcoded production paths from server.js
-- [ ] Centralize API configuration in all projects
 - [ ] Add deployment documentation
 
 ---
