@@ -42,10 +42,10 @@ function PriorityBadge({ priority }) {
 const TASK_STATUSES = ['Idea','Backlog','In Progress','In Review','Done']
 const EMPTY_PROJECT = { id: null, name: '', description: '', status: 'Active', site_id: '' }
 const SITES = [
-  { id: 1, name: 'CardSparky', icon: '⚡' },
-  { id: 2, name: 'Serial Killers', icon: '🔪' },
+  { id: 1, name: 'CardSparky', icon: '🃏' },
+  { id: 2, name: 'SerialKillers', icon: '🔍' },
   { id: 3, name: 'Denick', icon: '🛡️' },
-  { id: 4, name: 'Pitch Passport', icon: '⚽' },
+  { id: 4, name: 'SoccerBeacon', icon: '⚽' },
 ]
 const EMPTY_RELEASE = { id: null, project_id: '', version: '', name: '', description: '', release_date: '', status: 'Planning' }
 const EMPTY_TASK = { id: null, project_id: '', release_id: '', title: '', description: '', plan: '', done: '', type: 'Enhancement', status: 'Idea', priority: 'Medium', shirt_size: 'S', assignee: 'Eric', est_hours: '', actual_hours: '', model: 'Auto' }
