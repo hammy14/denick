@@ -66,7 +66,7 @@ function useApi(url) {
     }
   }, [])
 
-  useEffect(() => { load() }, [url, load])
+  useEffect(() => { load() }, [url])
   return [data, load]
 }
 
