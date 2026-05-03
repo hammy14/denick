@@ -17,9 +17,11 @@ import socialRoutes from './routes/social.js'
 import sitesRoutes from './routes/sites.js'
 import seoRoutes from './routes/seo.js'
 
-// Load environment variables with explicit path for production
-dotenv.config({ path: '/home/apps/denick/.env' })
-// Fallback to local .env if running locally
+// Load environment variables
+// Try production path first, then fall back to local .env
+const productionEnvPath = process.env.ENV_PATH || '.env'
+dotenv.config({ path: productionEnvPath })
+// If still no DB_NAMES, try default .env
 if (!process.env.DB_NAMES) {
   dotenv.config()
 }
