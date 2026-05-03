@@ -86,7 +86,8 @@ export default function SocialPostsManager() {
 
   // Blog to social
   function createFromBlog(article) {
-    const body = `New on the blog: ${article.title}\n\n${article.excerpt}\n\nRead more: https://cardsparky.com/blog/${article.slug}`
+    const blogUrl = `${import.meta.env.VITE_BLOG_URL || 'https://cardsparky.com'}/blog/${article.slug}`
+    const body = `New on the blog: ${article.title}\n\n${article.excerpt}\n\nRead more: ${blogUrl}`
     setEditing({ ...newPost(), title: article.title, body, hashtags: '#sportscards #cardsparky #cardcollecting' })
     setTab('posts')
   }

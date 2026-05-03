@@ -77,7 +77,7 @@ function ArticlePage() {
     title: article.title,
     description: article.excerpt,
     datePublished: article.date,
-    url: `https://cardsparky.com/blog/${article.slug}`,
+    url: `${import.meta.env.VITE_BLOG_URL || 'https://cardsparky.com'}/blog/${article.slug}`,
     author: 'CardSparky',
   })
 
